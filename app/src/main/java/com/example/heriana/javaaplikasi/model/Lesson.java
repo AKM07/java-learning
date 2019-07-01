@@ -14,6 +14,10 @@ public class Lesson implements Serializable {
 
     }
 
+    public Lesson (String name, String content) {
+        this.name = name;
+        this.content = content;
+    }
     public String getName() {
         return name;
     }
@@ -29,4 +33,5 @@ public class Lesson implements Serializable {
     public void setContent(String content) {
         this.content = content;
     }
+
 }

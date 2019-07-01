@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 
 import com.example.heriana.javaaplikasi.Activities.CompilerActivity;
-import com.example.heriana.javaaplikasi.lesson.MenuMateriActivity;
+import com.example.heriana.javaaplikasi.lesson.LessonCategoryActivity;
 import com.example.heriana.javaaplikasi.R;
 import com.example.heriana.javaaplikasi.question.SoalActivity;
 
@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         lessonCard.setOnClickListener(v -> {
-            Intent a = new Intent(HomeActivity.this, MenuMateriActivity.class);
+            Intent a = new Intent(HomeActivity.this, LessonCategoryActivity.class);
             startActivity(a);
         });
 
@@ -44,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         scoreCard.setOnClickListener(v -> {
-            Intent a = new Intent(HomeActivity.this, MenuMateriActivity.class);
+            Intent a = new Intent(HomeActivity.this, LessonCategoryActivity.class);
             startActivity(a);
         });
 

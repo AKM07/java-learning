@@ -28,8 +28,9 @@
             android:name=".home.HomeActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".lesson.MenuMateriActivity"
-            android:theme="@style/AppTheme" />
+            android:name=".lesson.LessonCategoryActivity"
+            android:label="Lesson"
+            android:theme="@style/NoActionBar" />
         <activity android:name=".Activities.LogoutActivity" />
         <activity android:name=".Activities.MateriJavaProgramming" />
         <activity android:name=".Activities.MateriJavaFundamental" />
