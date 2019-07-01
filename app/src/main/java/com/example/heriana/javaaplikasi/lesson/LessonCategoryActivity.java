@@ -5,6 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.example.heriana.javaaplikasi.R;
 import com.example.heriana.javaaplikasi.adapter.PagerAdapter;
@@ -42,5 +43,14 @@ public class LessonCategoryActivity extends AppCompatActivity {
 
         viewpager.setAdapter(pagerAdapter);
         tab.setupWithViewPager(viewpager);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

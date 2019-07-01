@@ -38,6 +38,11 @@ public class LessonCategoryAdapter extends RecyclerView.Adapter<LessonCategoryAd
     public void onBindViewHolder(@NonNull LessonCategoryViewHolder lessonCategoryViewHolder, int i) {
         Lesson item = lessonList.get(i);
         lessonCategoryViewHolder.lessonName.setText(item.getName());
+        lessonCategoryViewHolder.lessonContent.setText(item.getContent());
+
+        lessonCategoryViewHolder.itemView.setOnClickListener(v -> {
+
+        });
     }
 
     @Override
@@ -52,9 +57,11 @@ public class LessonCategoryAdapter extends RecyclerView.Adapter<LessonCategoryAd
 
     public class LessonCategoryViewHolder extends RecyclerView.ViewHolder {
         private TextView lessonName;
+        private TextView lessonContent;
         public LessonCategoryViewHolder(View itemView) {
             super(itemView);
             lessonName = itemView.findViewById(R.id.lesson_name);
+            lessonContent = itemView.findViewById(R.id.lesson_content);
         }
     }
 }
