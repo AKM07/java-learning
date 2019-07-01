@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "268495867346",
+    "firebase_url": "https://javaaplikasi-52db1.firebaseio.com",
+    "project_id": "javaaplikasi-52db1",
+    "storage_bucket": "javaaplikasi-52db1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:268495867346:android:e35386a1c606c5c9",
+        "android_client_info": {
+          "package_name": "com.example.heriana.javaaplikasi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "268495867346-7r75mu7dg9fslh25rt5u5tlj6u2ma7bt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHpC7aryycQNkPUrPngmVMCHhLyhHgquk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
