@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         initViews();
 
         sp = getSharedPreferences("logged",MODE_PRIVATE);
+
         if (sp.getBoolean("logged",false)) {
             Intent i = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(i);

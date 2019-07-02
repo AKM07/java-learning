@@ -2,10 +2,12 @@ package com.example.heriana.javaaplikasi.question;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -48,8 +50,11 @@ public class QuestionActivity extends AppCompatActivity implements QuestionContr
     private int order = 1;
     ProgressDialog mProgressDialog;
     private List<Answer> choosedAnswers = new ArrayList<>();
+    private List<QuestionFirebase> questions = new ArrayList<>();
     QuestionPresenter presenter;
     long total = 0;
+    double correctCount = 0;
+    String currentQuestion = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,16 +76,16 @@ public class QuestionActivity extends AppCompatActivity implements QuestionContr
 
         btnNext.setOnClickListener(v -> {
             if (radio0.isChecked()) {
-                choosedAnswers.add(new Answer(order, "A"));
+                choosedAnswers.add(new Answer(currentQuestion, "A"));
                 loadNextQuestion();
             } else if (radio1.isChecked()) {
-                choosedAnswers.add(new Answer(order, "B"));
+                choosedAnswers.add(new Answer(currentQuestion, "B"));
                 loadNextQuestion();
             } else if (radio2.isChecked()) {
-                choosedAnswers.add(new Answer(order, "C"));
+                choosedAnswers.add(new Answer(currentQuestion, "C"));
                 loadNextQuestion();
             } else if (radio3.isChecked()) {
-                choosedAnswers.add(new Answer(order, "D"));
+                choosedAnswers.add(new Answer(currentQuestion, "D"));
                 loadNextQuestion();
             } else {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
@@ -92,12 +97,29 @@ public class QuestionActivity extends AppCompatActivity implements QuestionContr
                 AlertDialog alert11 = builder1.create();
                 alert11.show();
             }
+
+            if (order == total) {
+                btnNext.setVisibility(View.GONE);
+                btnDone.setVisibility(View.VISIBLE);
+            }
         });
 
         btnDone.setOnClickListener(v -> {
+            for (QuestionFirebase firebase : questions) {
+                for (Answer answer : choosedAnswers) {
+                    if (firebase.getQuestion().equals(answer.getQuestion())) {
+                        if (answer.getAnswer().equals(firebase.getAnswer())) {
+                            correctCount++;
+                        }
+                    }
+                }
+            }
+
             Intent intent = new Intent(QuestionActivity.this, SkorActivity.class);
-            intent.putParcelableArrayListExtra("answers", (ArrayList<? extends Parcelable>) choosedAnswers);
+            intent.putExtra("score", correctCount);
+            intent.putExtra("total", total);
             startActivity(intent);
+            finish();
         });
     }
 
@@ -106,19 +128,14 @@ public class QuestionActivity extends AppCompatActivity implements QuestionContr
         mProgressDialog.show();
         presenter.getQuestion(QuestionActivity.this, order);
         presenter.getAnswerChoice(QuestionActivity.this, order);
-
-        if (choosedAnswers.size() == total) {
-            Toast.makeText(this, "YOU DONE GET OUT", Toast.LENGTH_SHORT).show();
-            btnNext.setVisibility(View.GONE);
-            btnDone.setVisibility(View.VISIBLE);
-        }
     }
 
     @Override
     public void onGetQuestionSuccess(QuestionFirebase questionFirebase) {
         if (questionFirebase != null) {
+            currentQuestion = questionFirebase.getQuestion();
             questionText.setText(questionFirebase.getQuestion());
-            btnNext.setEnabled(true);
+            questions.add(questionFirebase);
         }
     }
 
@@ -158,9 +175,32 @@ public class QuestionActivity extends AppCompatActivity implements QuestionContr
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            this.finish();
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setMessage("Progress anda akan hilang, anda yakin?");
+            builder1.setCancelable(true);
+            builder1.setPositiveButton("YA", (dialog, which) -> {
+                dialog.cancel();
+                QuestionActivity.this.finish();
+            });
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("Progress anda akan hilang, anda yakin?");
+        builder1.setCancelable(true);
+        builder1.setPositiveButton("YA", (dialog, which) -> {
+            dialog.cancel();
+            QuestionActivity.this.finish();
+        });
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 }

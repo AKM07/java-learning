@@ -8,53 +8,34 @@ import java.io.Serializable;
 /**
  * Created by AKM on 7/2/2019.
  */
-public class Answer implements Parcelable {
+public class Answer{
 
-    private int order;
+    private String question;
     private String answer;
 
     public Answer() {
 
     }
 
-    public Answer(int order, String answer) {
-        this.order = order;
+    public Answer(String question, String answer) {
+        this.question = question;
         this.answer = answer;
     }
 
-    protected Answer(Parcel in) {
-        order = in.readInt();
-        answer = in.readString();
+    public String getQuestion() {
+        return question;
     }
 
-    public static final Creator<Answer> CREATOR = new Creator<Answer>() {
-        @Override
-        public Answer createFromParcel(Parcel in) {
-            return new Answer(in);
-        }
+    public void setQuestion(String question) {
+        this.question = question;
+    }
 
-        @Override
-        public Answer[] newArray(int size) {
-            return new Answer[size];
-        }
-    };
-
-    public int getOrder() {
-        return order;
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 
     public String getAnswer() {
         return answer;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.order);
-        dest.writeString(this.answer);
-    }
 }
