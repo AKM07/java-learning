@@ -1,4 +1,4 @@
-package com.example.heriana.javaaplikasi.question;
+package com.example.heriana.javaaplikasi.score;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

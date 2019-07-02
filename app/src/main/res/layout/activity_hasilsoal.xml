@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/gb"
-    tools:context="com.example.heriana.javaaplikasi.question.SkorActivity">
+    tools:context="com.example.heriana.javaaplikasi.questionFirebase.SkorActivity">
 
     <ImageView
         android:layout_width="match_parent"

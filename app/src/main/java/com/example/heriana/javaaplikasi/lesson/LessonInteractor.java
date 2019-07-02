@@ -42,12 +42,10 @@ public class LessonInteractor implements LessonContract.Intractor {
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.e("lessonSize", String.valueOf(dataSnapshot.getChildrenCount()));
 
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Lesson lesson = snapshot.getValue(Lesson.class);
                     lessons.add(lesson);
-                    Log.e("lesson", String.valueOf(lesson));
                 }
                 if (lessons.size() == dataSnapshot.getChildrenCount()) {
                     onGetLessonListener.onSuccess(lessons);
@@ -55,7 +53,6 @@ public class LessonInteractor implements LessonContract.Intractor {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("databaseError", String.valueOf(databaseError.toException()));
                 onGetLessonListener.onFailure(databaseError.getMessage());
             }
         };

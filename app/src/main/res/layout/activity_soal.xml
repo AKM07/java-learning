@@ -2,58 +2,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/gb"
-    tools:context="com.example.heriana.javaaplikasi.question.SoalActivity"
-    >
+    tools:context="com.example.heriana.javaaplikasi.questionFirebase.QuestionActivity">
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:orientation="vertical">
+
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/question_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:text="Large Text"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:padding="18dp"
+            android:text="Loading..."
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold" />
+
         <RadioGroup
             android:id="@+id/radioGroup1"
             android:layout_width="match_parent"
-            android:padding="20dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.04" >
+            android:layout_weight="0.04"
+            android:padding="20dp">
+
             <RadioButton
                 android:id="@+id/radio0"
-                android:padding="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:text="RadioButton" />
+                android:padding="20dp"
+                android:text="Loading..." />
+
             <RadioButton
                 android:id="@+id/radio1"
-                android:padding="20dp"
-                android:textColor="#ffffff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:padding="20dp"
+                android:text="Loading..." />
+
             <RadioButton
                 android:id="@+id/radio2"
-                android:padding="20dp"
-                android:textColor="#ffffff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:padding="20dp"
+                android:text="Loading..." />
+
+            <RadioButton
+                android:id="@+id/radio3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="Loading..."/>
         </RadioGroup>
 
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/btn_next"
             android:layout_width="match_parent"
+            android:background="@color/colorPrimary"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
             android:text="NEXT" />
+
+        <Button
+            android:id="@+id/btn_done"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimary"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:text="DONE" />
     </LinearLayout>
 </RelativeLayout>

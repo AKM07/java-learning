@@ -62,6 +62,7 @@ public class LessonProgrammingFragment extends Fragment implements LessonContrac
         mProgressDialog.setMessage("Please wait..");
 
         presenter.getProgrammingLessons(getActivity());
+        mProgressDialog.dismiss();
     }
 
     @Override
@@ -76,12 +77,14 @@ public class LessonProgrammingFragment extends Fragment implements LessonContrac
 
     @Override
     public void onGetProgrammingSuccess(List<Lesson> lessonList) {
+        mProgressDialog.dismiss();
         Log.e("lessonListimpoted", String.valueOf(lessonList.size()));
         adapter.addLessons(lessonList);
     }
 
     @Override
     public void onGetProgrammingFailure(String message) {
+        mProgressDialog.dismiss();
         Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 

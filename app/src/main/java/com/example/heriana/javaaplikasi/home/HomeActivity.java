@@ -8,7 +8,7 @@ import android.support.v7.widget.CardView;
 import com.example.heriana.javaaplikasi.Activities.CompilerActivity;
 import com.example.heriana.javaaplikasi.lesson.LessonCategoryActivity;
 import com.example.heriana.javaaplikasi.R;
-import com.example.heriana.javaaplikasi.question.SoalActivity;
+import com.example.heriana.javaaplikasi.question.QuestionActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,7 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         questionCard.setOnClickListener(v -> {
-            Intent b = new Intent(HomeActivity.this, SoalActivity.class);
+            Intent b = new Intent(HomeActivity.this, QuestionActivity.class);
             startActivity(b);
         });
 

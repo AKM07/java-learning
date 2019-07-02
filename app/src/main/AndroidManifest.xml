@@ -26,17 +26,20 @@
             android:label="Authentication" />
         <activity
             android:name=".home.HomeActivity"
+            android:label="Learning Java"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".lesson.LessonCategoryActivity"
-            android:label="Lesson"
+            android:label="Learning Java"
             android:theme="@style/NoActionBar" />
         <activity android:name=".Activities.LogoutActivity" />
         <activity android:name=".Activities.MateriJavaProgramming" />
         <activity android:name=".Activities.MateriJavaFundamental" />
-        <activity android:name=".question.SoalActivity" />
+        <activity android:name=".question.QuestionActivity"
+            android:label="Learning Java"
+            android:theme="@style/AppTheme"/>
         <activity android:name=".Activities.CompilerActivity" />
-        <activity android:name=".question.SkorActivity" />
+        <activity android:name=".score.SkorActivity" />
         <activity
             android:name=".lesson.LessonReadPDFActivity"
             android:theme="@style/NoActionBar" />

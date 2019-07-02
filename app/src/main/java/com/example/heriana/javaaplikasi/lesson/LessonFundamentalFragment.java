@@ -58,6 +58,7 @@ public class LessonFundamentalFragment extends Fragment implements LessonContrac
         mProgressDialog = new ProgressDialog(getActivity());
         mProgressDialog.setMessage("Please wait..");
 
+        mProgressDialog.show();
         presenter.getLessons(getActivity());
     }
 
@@ -68,11 +69,13 @@ public class LessonFundamentalFragment extends Fragment implements LessonContrac
 
     @Override
     public void onGetLessonSuccess(List<Lesson> lessonList) {
+        mProgressDialog.dismiss();
         adapter.addLessons(lessonList);
     }
 
     @Override
     public void onGetLessonFailure(String message) {
+        mProgressDialog.dismiss();
         Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 

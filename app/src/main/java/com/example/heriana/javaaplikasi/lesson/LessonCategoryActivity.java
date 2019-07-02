@@ -33,10 +33,6 @@ public class LessonCategoryActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Lesson");
         }
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragment(new LessonFundamentalFragment(), "Java Fundamental", 0);
         pagerAdapter.addFragment(new LessonProgrammingFragment(), "Java Programming", 1);
