@@ -37,6 +37,9 @@
         <activity android:name=".question.SoalActivity" />
         <activity android:name=".Activities.CompilerActivity" />
         <activity android:name=".question.SkorActivity" />
+        <activity
+            android:name=".lesson.LessonReadPDFActivity"
+            android:theme="@style/NoActionBar" />
     </application>
 
 </manifest>

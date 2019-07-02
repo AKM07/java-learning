@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.heriana.javaaplikasi.R;
 import com.example.heriana.javaaplikasi.home.HomeActivity;
 import com.example.heriana.javaaplikasi.register.RegistrationActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -89,6 +90,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         mProgressDialog.dismiss();
         Toast.makeText(getApplicationContext(), "Successfully Logged in", Toast.LENGTH_SHORT).show();
         sp.edit().putBoolean("logged",true).apply();
+        sp.edit().putString("userUid", FirebaseAuth.getInstance().getCurrentUser().getUid()).apply();
         Intent i = new Intent(LoginActivity.this, HomeActivity.class);
         startActivity(i);
         finish();

@@ -9,14 +9,16 @@ public class Lesson implements Serializable {
 
     private String name;
     private String content;
+    private String fileUrl;
 
     public Lesson () {
 
     }
 
-    public Lesson (String name, String content) {
+    public Lesson (String name, String content, String fileUrl) {
         this.name = name;
         this.content = content;
+        this.fileUrl = fileUrl;
     }
     public String getName() {
         return name;
@@ -32,6 +34,14 @@ public class Lesson implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getFileUrl() {
+        return fileUrl;
+    }
+
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
     }
 
 }

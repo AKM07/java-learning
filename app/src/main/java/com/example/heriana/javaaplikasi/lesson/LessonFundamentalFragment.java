@@ -1,5 +1,6 @@
 package com.example.heriana.javaaplikasi.lesson;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -7,21 +8,15 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.heriana.javaaplikasi.R;
 import com.example.heriana.javaaplikasi.model.Lesson;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
+import java.io.File;
 import java.util.List;
 
 import butterknife.BindView;
@@ -30,14 +25,13 @@ import butterknife.ButterKnife;
 /**
  * Created by GBS Ari on 7/1/2019.
  */
-public class LessonFundamentalFragment extends Fragment {
-
+public class LessonFundamentalFragment extends Fragment implements LessonContract.View {
 
     @BindView(R.id.lesson_list)
     RecyclerView lessonList;
+    ProgressDialog mProgressDialog;
 
-    private LessonCategoryAdapter adapter;
-    private List<Lesson> lessons = new ArrayList<>();
+    private LessonFundamentalAdapter adapter;
 
     @Nullable
     @Override
@@ -48,45 +42,57 @@ public class LessonFundamentalFragment extends Fragment {
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
 
-        adapter = new LessonCategoryAdapter(getActivity());
+        adapter = new LessonFundamentalAdapter(getActivity());
         lessonList.setLayoutManager(llm);
         lessonList.setItemAnimator(new DefaultItemAnimator());
         lessonList.setHasFixedSize(true);
         lessonList.setAdapter(adapter);
-
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        LessonPresenter presenter = new LessonPresenter(this);
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference ref = reference.child("lesson/javaFundamental");
-        ValueEventListener listener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.e("lessonSize", String.valueOf(dataSnapshot.getChildrenCount()));
+        mProgressDialog = new ProgressDialog(getActivity());
+        mProgressDialog.setMessage("Please wait..");
 
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Lesson lesson = snapshot.getValue(Lesson.class);
-                    lessons.add(lesson);
-                    Log.e("lesson", String.valueOf(lesson));
-
-                    adapter.addLessons(lessons);
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("databaseError", String.valueOf(databaseError.toException()));
-            }
-        };
-
-        ref.addValueEventListener(listener);
+        presenter.getLessons(getActivity());
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+    }
+
+    @Override
+    public void onGetLessonSuccess(List<Lesson> lessonList) {
+        adapter.addLessons(lessonList);
+    }
+
+    @Override
+    public void onGetLessonFailure(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onGetProgrammingSuccess(List<Lesson> lessonList) {
+
+    }
+
+    @Override
+    public void onGetProgrammingFailure(String message) {
+
+    }
+
+    @Override
+    public void onGetPDFFileSuccess(File file) {
+
+    }
+
+    @Override
+    public void onGetPDFFileFailure(String message) {
+
     }
 }
