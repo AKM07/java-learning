@@ -45,13 +45,12 @@
             android:name=".lesson.LessonCategoryActivity"
             android:label="Learning Java"
             android:theme="@style/NoActionBar" />
-        <activity android:name=".Activities.LogoutActivity" />
-        <activity android:name=".Activities.MateriJavaProgramming" />
-        <activity android:name=".Activities.MateriJavaFundamental" />
         <activity android:name=".question.QuestionActivity"
             android:label="Learning Java"
             android:theme="@style/AppTheme"/>
-        <activity android:name=".Activities.CompilerActivity" />
+        <activity android:name=".compiler.CompilerActivity"
+            android:label="Learning Java"
+            android:theme="@style/AppTheme" />
         <activity android:name=".score.SkorActivity" />
         <activity
             android:name=".lesson.LessonReadPDFActivity"

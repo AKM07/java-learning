@@ -28,15 +28,8 @@ public class SkorActivity extends AppCompatActivity {
         double score = getIntent().getDoubleExtra("score", 0);
         long total = getIntent().getLongExtra("total", 0);
 
-        Log.e("totals", String.valueOf(total));
-        Log.e("scores", String.valueOf(score));
-
-
         double totalScore = score * 10;
         double totalResult = total * 10;
-
-        Log.e("totalScore", String.valueOf(totalScore).replaceAll(".0", ""));
-        Log.e("totalResult", String.valueOf(totalResult).replaceAll(".0", ""));
 
         labelQuizScore.setText(String.valueOf(totalScore));
         labelTotalCorrect.setText(String.valueOf(totalResult));

@@ -1,21 +1,18 @@
 package com.example.heriana.javaaplikasi.home;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.heriana.javaaplikasi.Activities.CompilerActivity;
+import com.example.heriana.javaaplikasi.compiler.CompilerActivity;
 import com.example.heriana.javaaplikasi.lesson.LessonCategoryActivity;
 import com.example.heriana.javaaplikasi.R;
 import com.example.heriana.javaaplikasi.login.LoginActivity;
-import com.example.heriana.javaaplikasi.question.QuestionActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
