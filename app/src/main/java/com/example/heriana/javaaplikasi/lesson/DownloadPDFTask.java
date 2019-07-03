@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.heriana.javaaplikasi.helpers.FlakeGenerator;
 import com.example.heriana.javaaplikasi.helpers.Helpers;
 import com.example.heriana.javaaplikasi.model.PDF;
 import com.orm.query.Condition;
@@ -40,7 +41,7 @@ public class DownloadPDFTask extends AsyncTask<String, Void, File> {
 
         try {
 
-            String fileName = "javaLearn_" + Helpers.formatDate(new Date());
+            String fileName = "javaLearn_" + Helpers.formatDate(new Date()) + "_" + FlakeGenerator.generate();
 
             URL url = new URL(fileUrl);
             HttpURLConnection c = (HttpURLConnection) url.openConnection();

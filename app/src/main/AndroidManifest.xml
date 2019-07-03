@@ -12,6 +12,19 @@
         android:roundIcon="@mipmap/firebase_logo"
         android:supportsRtl="true"
         android:theme="@style/NoActionBar">
+
+        <meta-data
+            android:name="DATABASE"
+            android:value="javalearn.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="3" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="com.example.heriana.javaaplikasi" />
         <activity
             android:name=".login.LoginActivity"
             android:label="Authentication">

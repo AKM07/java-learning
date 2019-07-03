@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -28,6 +29,9 @@ public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.compiler_card)
     CardView compilerCard;
 
+    SharedPreferences mySPrefs;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,9 @@ public class HomeActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Learning Java");
         }
+
+        mySPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = mySPrefs.edit();
 
         lessonCard.setOnClickListener(v -> {
             Intent a = new Intent(HomeActivity.this, LessonCategoryActivity.class);
@@ -63,11 +70,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_settings) {
-            SharedPreferences mySPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-            SharedPreferences.Editor editor = mySPrefs.edit();
             mySPrefs.edit().putBoolean("logged", false).apply();
-            editor.remove("userUid");
-            editor.apply();
 
             startActivity(new Intent(this, LoginActivity.class));
             finish();
