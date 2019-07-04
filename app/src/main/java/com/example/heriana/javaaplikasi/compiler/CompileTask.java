@@ -44,8 +44,8 @@ public class CompileTask extends AsyncTask<String, Void, String> {
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json");
 
-            String input = "{clientId: " + clientId + ",clientSecret:" + clientSecret + ",script:" + script + ",stdIn:" + "Stdin" +
-                    ",language:" + language + ",versionIndex:" + versionIndex + "}";
+            String input = "{\"clientId\": \"" + clientId + "\",\"clientSecret\":\"" + clientSecret + "\",\"script\":\"" + script.replaceAll("[\r\n]+", " ") +
+                    "\",\"language\":\"" + language + "\",\"versionIndex\":\"" + versionIndex + "\"} ";
 
             Log.e("input Jdoodle", input);
 
@@ -61,7 +61,6 @@ public class CompileTask extends AsyncTask<String, Void, String> {
             BufferedReader bufferedReader;
             bufferedReader = new BufferedReader(new InputStreamReader((connection.getInputStream())));
             String output;
-            System.out.println();
             while ((output = bufferedReader.readLine()) != null) {
                 Log.e("Output from JDoodle", output);
                 result = output;

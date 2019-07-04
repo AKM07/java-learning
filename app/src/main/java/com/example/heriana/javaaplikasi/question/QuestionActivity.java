@@ -77,15 +77,19 @@ public class QuestionActivity extends AppCompatActivity implements QuestionContr
         btnNext.setOnClickListener(v -> {
             if (radio0.isChecked()) {
                 choosedAnswers.add(new Answer(currentQuestion, "A"));
+                radio0.setChecked(false);
                 loadNextQuestion();
             } else if (radio1.isChecked()) {
                 choosedAnswers.add(new Answer(currentQuestion, "B"));
+                radio1.setChecked(false);
                 loadNextQuestion();
             } else if (radio2.isChecked()) {
                 choosedAnswers.add(new Answer(currentQuestion, "C"));
+                radio2.setChecked(false);
                 loadNextQuestion();
             } else if (radio3.isChecked()) {
                 choosedAnswers.add(new Answer(currentQuestion, "D"));
+                radio3.setChecked(false);
                 loadNextQuestion();
             } else {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(this);

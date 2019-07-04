@@ -14,6 +14,7 @@ import com.example.heriana.javaaplikasi.compiler.CompilerWebViewActivity;
 import com.example.heriana.javaaplikasi.lesson.LessonCategoryActivity;
 import com.example.heriana.javaaplikasi.R;
 import com.example.heriana.javaaplikasi.login.LoginActivity;
+import com.example.heriana.javaaplikasi.question.QuestionActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         scoreCard.setOnClickListener(v -> {
-            Intent a = new Intent(HomeActivity.this, LessonCategoryActivity.class);
+            Intent a = new Intent(HomeActivity.this, QuestionActivity.class);
             startActivity(a);
         });
 

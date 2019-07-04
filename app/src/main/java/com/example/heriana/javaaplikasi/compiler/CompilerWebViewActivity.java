@@ -36,6 +36,7 @@ public class CompilerWebViewActivity extends AppCompatActivity {
         {
             webview.setWebViewClient(new myWebClient());
             webview.getSettings().setJavaScriptEnabled(true);
+//            webview.loadUrl("https://www.guru99.com/try-java-editor.html");
             webview.loadUrl("https://www.tutorialspoint.com/compile_java_online.php");
 //            webview.loadUrl("https://www.jdoodle.com/online-java-compiler");
         }

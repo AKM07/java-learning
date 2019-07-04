@@ -56,11 +56,14 @@ public class CompilerActivity extends AppCompatActivity implements CompileTask.C
 
     @Override
     public void onCompilePostExecute(String output) {
-
+        mProgressDialog.dismiss();
+        if (output != null) {
+            compileResult.setText(output);
+        }
     }
 
     @Override
     public void onCompileCancelled(String output) {
-
+        mProgressDialog.dismiss();
     }
 }
