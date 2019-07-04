@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.heriana.javaaplikasi.compiler.CompilerActivity;
+import com.example.heriana.javaaplikasi.compiler.CompilerWebViewActivity;
 import com.example.heriana.javaaplikasi.lesson.LessonCategoryActivity;
 import com.example.heriana.javaaplikasi.R;
 import com.example.heriana.javaaplikasi.login.LoginActivity;
@@ -52,7 +53,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         compilerCard.setOnClickListener(v -> {
-            Intent c = new Intent(HomeActivity.this, CompilerActivity.class);
+            Intent c = new Intent(HomeActivity.this, CompilerWebViewActivity.class);
             startActivity(c);
         });
 

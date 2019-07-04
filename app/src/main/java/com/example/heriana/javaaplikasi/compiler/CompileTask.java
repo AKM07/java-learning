@@ -44,8 +44,8 @@ public class CompileTask extends AsyncTask<String, Void, String> {
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json");
 
-            String input = "{\"clientId\": \"" + clientId + "\",\"clientSecret\":\"" + clientSecret + "\",\"script\":\"" + script +
-                    "\",\"language\":\"" + language + "\",\"versionIndex\":\"" + versionIndex + "\"} ";
+            String input = "{clientId: " + clientId + ",clientSecret:" + clientSecret + ",script:" + script + ",stdIn:" + "Stdin" +
+                    ",language:" + language + ",versionIndex:" + versionIndex + "}";
 
             Log.e("input Jdoodle", input);
 
@@ -54,8 +54,8 @@ public class CompileTask extends AsyncTask<String, Void, String> {
             outputStream.flush();
 
             if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
-                result = "Periksa kembali Inputan Anda";
-                throw new RuntimeException("Please check your inputs : HTTP error code : " + connection.getResponseCode());
+                Log.e("Error", String.valueOf(connection.getResponseCode()));
+                listener.onCompileCancelled("Cek Kembali Inputan Anda");
             }
 
             BufferedReader bufferedReader;
